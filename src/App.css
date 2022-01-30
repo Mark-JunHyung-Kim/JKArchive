@@ -1,38 +1,324 @@
-.App {
-  text-align: center;
+body {
+  margin: 0;
+  overflow-y: hidden;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.outer {
+  height: 100vh;
+  overflow-y: auto;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+/* 화면에서 스크롤바 안보이게 */
+.outer::-webkit-scrollbar {
+  display: none;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.inner {
+  height: 100vh;
+  padding-top: 10vh;
   display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 100px;
+}
+
+.welcome {
+  /* making gradient effect to shade */
+  background-image: linear-gradient(rgba(77, 77, 77, 0.8), rgba(255, 255, 255, 0.5)), url('images/back_1.jpg');
   flex-direction: column;
+}
+
+/* aboutme page */
+.aboutme {
+  background-color: #0066a1;
+
+}
+
+.picArea img {
+  border-radius: 20%;
+  border: 4px solid;
+  border-color: #0066a1;
+
+  height: 500px;
+}
+
+/* .portfolio {} */
+
+.portfolioReact {
+  background-color: #797979;
+}
+
+.portfolioPython {
+  background-color: #ff57c7;
+}
+
+.bg-pink {
+  background-color: #f79054;
+}
+
+.divider {
+  width: 100%;
+  height: 5px;
+  background-color: rgb(255, 255, 255);
+}
+
+.header {
+
+  /* 바디부분에서 메인영역을 90vh로 잡으면 상관없는데, 고정할꺼면 두개 다 같이 바꿔야함 */
+  /* height: 10vh; */
+  /* height: 100px; */
+
+  /* min-height: 10vh; */
+  width: 100vw;
+  /* background-color: rgb(103, 104, 155); */
+
+  position: fixed;
+  top: 0;
+
+  /* alignment */
+  display: flex;
+
+  /* horizontal alignment (same space between 3 elements) */
+  justify-content: space-between;
+
+  /* vertical alignment*/
+  align-items: center;
+
+  /* font */
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-size: 20px;
+
+  /* since opacity function is inherited to child elements, it should be used as rgba color function */
+  color: rgba(255, 255, 255, 0.6);
+
+  /* making padding up-down 10px & left-right 20px */
+  padding: 10px 100px;
+}
+
+.header__onTop {
+  background-color: transparent;
+  transition: all, 1s;
+}
+
+.header__onTop div:hover, li:hover {
+  color: rgba(255, 255, 255, 1.0);
+  transition: color, 1s;
+  cursor: pointer;
+}
+
+
+/* when header leave top of the page and go to the second page */
+.header__offTop {
+  background-color: white;
+  color: rgba(0, 0, 0, 0.6);
+  transition-property: color;
+  transition-duration: 1s;
+  /* transition: all, 1s; */
+}
+
+.header__offTop div:hover {
+  color: rgba(0, 0, 0, 1.0);
+  cursor: pointer;
+  transition: all, 1s;
+}
+
+.header__offTop li:hover {
+  color: rgba(0, 0, 0, 1.0);
+  cursor: pointer;
+  transition: all, 1s;
+}
+
+.header__logo {
+  font-size: 30px;
+}
+
+.header__logo span {
+  font-weight: bold;
+  margin-left: 10px;
+}
+
+.header__menu {
+
+  display: flex;
+  /* making ul-li list into 1 row */
+  list-style: none;
+
+  /* vertical alignment*/
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  padding-left: 0px;
+  margin-bottom: 0;
+}
+
+.header__menu li {
+  padding: 6px 20px;
+}
+
+.header__sns {
+  display: flex;
+  /* making ul-li list into 1 row */
+  list-style: none;
+  /* vertical alignment */
+  align-items: center;
+
   color: white;
+
+  padding-left: 0;
+  margin-bottom: 0;
+
 }
 
-.App-link {
-  color: #61dafb;
+.header__sns li {
+  padding: 10px 5px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.header__sns #insta:hover {
+  color: rgb(250, 68, 226);
+  cursor: pointer;
+}
+
+.header__sns #facebook:hover {
+  color: rgb(58, 54, 240);
+  cursor: pointer;
+}
+
+.header__sns #github:hover {
+  color: rgb(44, 44, 44);
+  cursor: pointer;
+}
+
+/* this part will not be seen. */
+.footer {
+  height: 10vh;
+  background-color: #f79054;
+}
+
+.header__toggle {
+  display: flex;
+  list-style: none;
+  align-items: center;
+  color: rgba(0, 0, 0, 0.6);
+  padding: 0px 10px;
+  margin: 0;
+
+  font-size: 20px;
+
+  display: none;
+  position: absolute;
+  top: 15px;
+  right: 50px;
+}
+
+
+
+/* Animation Area */
+
+.header__menu #selected {
+
+  color: white;
+  background-color: rgb(41, 42, 112);
+  border-radius: 15px;
+
+  transition-property: background-color;
+  transition-duration: 1s;
+
+}
+
+
+
+@media screen and (max-width: 1228px) {
+
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
   }
-  to {
-    transform: rotate(360deg);
+
+  .header__toggle {
+    display: block;
+    cursor: pointer;
   }
+
+  /* 헤더가 첫페이지에 고정되어있을때 -> 토글 스위치할때 색 변경 (흰색) * */
+  .header__onTop .toggle__off {
+    color: rgba(255, 255, 255, 0.6);
+  }
+
+  .header__onTop .toggle__on {
+    color: rgba(255, 255, 255, 1.0);
+  }
+
+  /* 헤더가 첫페이지를 벗어나서 색 입혀졌을 때 -> 토글 스위치할때 색 변경 (검정) */
+  .header__offTop .toggle__off {
+    color: rgba(0, 0, 0, 0.6);
+  }
+
+  .header__offTop .toggle__on {
+    color: rgb(0, 0, 0);
+  }
+
+  .header__menu {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .menu__off {
+    animation: fade-out 1s;
+    animation-fill-mode: forwards;
+    display: none;
+    opacity: 0;
+  }
+
+  .menu__on {
+    /* display: flex;    
+    opacity: 1;
+    transition: all 1s; */
+
+    animation: fade-in 1s;
+    animation-fill-mode: forwards;
+    display: flex;
+  }
+
+  .header__sns {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  /* 이거 무슨기능이지? 페이드인인듯... */
+  .sns__off {
+    animation: fade-out 1s;
+    animation-fill-mode: forwards;
+    display: none;
+    opacity: 0;
+  }
+
+  .sns__on {
+    animation: fade-in 1s;
+    animation-fill-mode: forwards;
+    display: flex;
+  }
+
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+    }
+
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes fade-out {
+    from {
+      opacity: 1;
+    }
+
+    to {
+      opacity: 0;
+    }
+  }
+
+
 }
