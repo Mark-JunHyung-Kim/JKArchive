@@ -1,38 +1,585 @@
-.App {
-  text-align: center;
+/* import google font for contents */
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@800&family=Roboto+Mono:wght@700&display=swap');
+
+
+body {
+  margin: 0;
+  overflow-y: hidden;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.outer {
+  height: 100vh;
+  overflow-y: auto;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+/* 화면에서 스크롤바 안보이게 */
+.outer::-webkit-scrollbar {
+  display: none;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.dot {
+  width: 10px;
+  height: 10px;
+  border: 1px solid white;
+  border-radius: 10px;
+  transition-duration: 1000;
+  transition: "background-color 0.5s";
+}
+
+.dot__on {
+  background-color: transparent;
+}
+
+.dot__off {
+  background-color: rgba(255, 255, 255, 0.8);
+}
+
+.dots__area {
+  position: fixed;
+  top: 40%;
+  right: 100px;
+}
+
+.dots__display {
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  width: 20px;
+  height: 200px;
+}
+
+.inner {
+  height: 100vh;
+  padding-top: 10vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.welcome {
+  /* making gradient effect to shade */
+  background-image: linear-gradient(rgba(44, 44, 44, 0.8), rgba(148, 148, 148, 0.5)), url('images/back_1.jpg');
+  flex-direction: column;
+  padding-bottom: 10vh;
+}
+
+.welcome__intro {
+
+  /* MORE 버튼 내리기위함 */
+  margin-top: 20vh;
+  text-align: center;
+  /* 생각좀 해보고 넣을것.. */
+  /* font-family: 'Roboto Mono', sans-serif; */
+  color: rgba(255, 255, 255, 1.0);
+  text-transform: uppercase;
+}
+
+.intro__icon {
+  height: 60px;
+  color: rgba(255, 255, 255, 0.6);
+  transition: all 1s;
+}
+
+.icon__ontop {
+  animation-name: welcome__intro__icon__Animation;
+  animation-timing-function: ease;
+  animation-fill-mode: backwards;
+  animation-duration: 2s;
+  animation-delay: 1.2s;
+  /* transition: all 1s; */
+  cursor: pointer;
+}
+
+.icon__offtop {
+  opacity: 0;
+}
+
+.intro__icon:hover {
+  transition: all 1s;
+  color: rgba(255, 255, 255, 1.0);
+}
+
+@keyframes welcome__intro__icon__Animation {
+  from {
+    color: rgba(255, 255, 255, 0.0);
+  }
+
+  to {
+    color: rgba(255, 255, 255, 0.6);
+  }
+}
+
+.intro__myname {
+  font-size: 60px;
+  font-weight: 500;
+  text-shadow: 6px 6px 2px rgba(189, 189, 189, 0.4);
+  line-height: 1.0em;
+  padding-left: 0;
+}
+
+.myname__ontop {
+  animation-name: intro__myname__Animation;
+  animation-timing-function: ease;
+  animation-fill-mode: forwards;
+  animation-duration: 1.5s;
+}
+
+.myname__offtop {
+  opacity: 0;
+}
+
+@keyframes intro__myname__Animation {
+  0% {
+    transform: translateY(-60px);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.intro__title {
+  font-size: 30px;
+  color: rgba(255, 255, 255, 0.9);
+  text-shadow: 4px 4px 2px rgba(255, 255, 255, 0.2);
+  line-height: 1.0em;
+  padding-left: 0;
+
+  /* 딜레이때문에 초기 opacity값 0 넣어줘야함 */
+  opacity: 0;
+}
+
+.title__ontop {
+  animation-name: intro__title__Animation;
+  animation-timing-function: ease;
+  animation-fill-mode: forwards;
+  animation-delay: 0.5s;
+  animation-duration: 1.5s;
+}
+
+.title__offtop {
+  opacity: 0;
+}
+
+@keyframes intro__title__Animation {
+  from {
+    transform: translateY(-60px);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.welcome__midline {
+
+  width: 40vw;
+  min-height: 2px;
+  background-color: rgba(255, 255, 255, 0.8);
+  opacity: 0;
+}
+
+.midline__ontop {
+  animation-name: welcome__midline__Animation;
+  animation-timing-function: ease;
+  animation-fill-mode: forwards;
+  animation-duration: 2s;
+  animation-delay: 1.2s;
+}
+
+.midline__offtop {
+  opacity: 0;
+}
+
+@keyframes welcome__midline__Animation {
+  100% {
+    opacity: 1;
+  }
+}
+
+.welcome__subintro {
+  text-align: center;
+  width: 60vw;
+  font-size: 25px;
+  color: rgba(255, 255, 255, 0.9);
+  text-shadow: 4px 4px 2px rgba(0, 0, 0, 0.2);
+  padding-left: 0;
+  opacity: 0;
+}
+
+.subintro__ontop {
+  animation-name: welcome__subintro__Animation;
+  animation-timing-function: ease;
+  animation-fill-mode: forwards;
+  animation-delay: 2.0s;
+  animation-duration: 1.5s;
+}
+
+.subintro__offtop {
+  opacity: 0;
+}
+
+@keyframes welcome__subintro__Animation {
+  from {
+    transform: translateY(60px);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.welcome__moreinfo {
+
+  margin-top: 20vh;
+
+  padding: 4px 20px 4px 20px;
+  background-color: transparent;
+  border-color: rgb(255, 255, 255);
+  border-radius: 50px;
+  border: 3px solid;
+
+  font-size: 20px;
+  color: rgb(255, 255, 255);
+
+  opacity: 0.6;
+  transition: all 1s;
+  cursor: pointer;
+}
+
+.moreinfo__ontop {
+  animation-name: moreinfo__ontop__Animation;
+  animation-timing-function: ease;
+  animation-fill-mode: backwards;
+  animation-delay: 3.0s;
+  animation-duration: 2.0s;
+}
+
+.moreinfo__ontop:hover {
+  opacity: 1;
+  transition: all 1s;
+}
+
+.moreinfo__offtop {
+  opacity: 0;
+  transition: all 1s;
+}
+
+@keyframes moreinfo__ontop__Animation {
+  from {
+    transform: translateY(60px);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateY(0);
+    opacity: 0.6;
+  }
+}
+
+/* aboutme page */
+.aboutme {
+  background-color: #0066a1;
+
+}
+
+.picArea img {
+  border-radius: 20%;
+  border: 4px solid;
+  border-color: #0066a1;
+
+  height: 500px;
+}
+
+/* .portfolio {} */
+
+.portfolioReact {
+  background-color: #797979;
+}
+
+.portfolioPython {
+  background-color: #ff57c7;
+}
+
+.bg-pink {
+  background-color: #f79054;
+}
+
+.divider {
+  width: 100%;
+  height: 5px;
+  background-color: rgb(255, 255, 255);
+}
+
+.header {
+
+  /* 바디부분에서 메인영역을 90vh로 잡으면 상관없는데, 고정할꺼면 두개 다 같이 바꿔야함 */
+  /* height: 10vh; */
+  /* height: 100px; */
+
+  /* min-height: 10vh; */
+  width: 100vw;
+  /* background-color: rgb(103, 104, 155); */
+
+  position: fixed;
+  top: 0;
+
+  /* alignment */
+  display: flex;
+
+  /* horizontal alignment (same space between 3 elements) */
+  justify-content: space-between;
+
+  /* vertical alignment*/
+  align-items: center;
+
+  /* font */
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-size: 20px;
+
+  /* since opacity function is inherited to child elements, it should be used as rgba color function */
+  color: rgba(255, 255, 255, 0.6);
+
+  /* making padding up-down 10px & left-right 20px */
+  padding: 10px 10%;
+}
+
+.header__onTop {
+  background-color: transparent;
+
+  transition: all, 1s;
+}
+
+.header__onTop div:hover, li:hover {
+  color: rgba(255, 255, 255, 1.0);
+  transition: color, 1s;
+  cursor: pointer;
+}
+
+
+
+/* when header leave top of the page and go to the second page */
+.header__offTop {
+  background-color: white;
+  color: rgba(0, 0, 0, 0.6);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.6);
+
+
+  transition-property: color;
+  transition-duration: 1s;
+  /* transition: all, 1s; */
+}
+
+.header__offTop div:hover {
+  color: rgba(0, 0, 0, 1.0);
+  cursor: pointer;
+  transition: all, 1s;
+}
+
+.header__offTop li:hover {
+  color: rgba(0, 0, 0, 1.0);
+  cursor: pointer;
+  transition: all, 1s;
+}
+
+.header__logo {
+  font-size: 30px;
+}
+
+.header__logo span {
+  font-weight: bold;
+  margin-left: 10px;
+}
+
+.header__menu {
+
+  display: flex;
+  /* making ul-li list into 1 row */
+  list-style: none;
+
+  /* vertical alignment*/
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  padding-left: 0px;
+  margin-bottom: 0;
+}
+
+.header__menu li {
+  padding: 6px 20px;
+}
+
+.header__sns {
+  display: flex;
+  /* making ul-li list into 1 row */
+  list-style: none;
+  /* vertical alignment */
+  align-items: center;
+
   color: white;
+
+  padding-left: 0;
+  margin-bottom: 0;
+
 }
 
-.App-link {
-  color: #61dafb;
+.header__sns li {
+  padding: 10px 5px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.header__sns #insta:hover {
+  color: rgb(250, 68, 226);
+  cursor: pointer;
+}
+
+.header__sns #facebook:hover {
+  color: rgb(58, 54, 240);
+  cursor: pointer;
+}
+
+.header__sns #github:hover {
+  color: rgb(44, 44, 44);
+  cursor: pointer;
+}
+
+/* this part will not be seen. */
+.footer {
+  height: 10vh;
+  background-color: #f79054;
+}
+
+.header__toggle {
+  display: flex;
+  list-style: none;
+  align-items: center;
+  color: rgba(0, 0, 0, 0.6);
+  padding: 0px 10px;
+  margin: 0;
+
+  font-size: 20px;
+
+  display: none;
+  position: absolute;
+  top: 17.5px;
+  right: 20px;
+}
+
+
+
+/* Animation Area */
+
+.header__menu #selected {
+
+  color: white;
+  background-color: rgb(41, 42, 112);
+  border-radius: 15px;
+
+  transition-property: background-color;
+  transition-duration: 1s;
+
+}
+
+
+
+@media screen and (max-width: 1228px) {
+
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
   }
-  to {
-    transform: rotate(360deg);
+
+  .header__toggle {
+    display: block;
+    cursor: pointer;
   }
+
+  /* 헤더가 첫페이지에 고정되어있을때 -> 토글 스위치할때 색 변경 (흰색) * */
+  .header__onTop .toggle__off {
+    color: rgba(255, 255, 255, 0.6);
+  }
+
+  .header__onTop .toggle__on {
+    color: rgba(255, 255, 255, 1.0);
+  }
+
+  /* 헤더가 첫페이지를 벗어나서 색 입혀졌을 때 -> 토글 스위치할때 색 변경 (검정) */
+  .header__offTop .toggle__off {
+    color: rgba(0, 0, 0, 0.6);
+  }
+
+  .header__offTop .toggle__on {
+    color: rgb(0, 0, 0);
+  }
+
+  .header__menu {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .menu__off {
+    animation: fade-out 1s;
+    animation-fill-mode: forwards;
+    display: none;
+    opacity: 0;
+  }
+
+  .menu__on {
+    /* display: flex;    
+    opacity: 1;
+    transition: all 1s; */
+
+    animation: fade-in 1s;
+    animation-fill-mode: forwards;
+    display: flex;
+  }
+
+  .header__sns {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  /* 이거 무슨기능이지? 페이드인인듯... */
+  .sns__off {
+    animation: fade-out 1s;
+    animation-fill-mode: forwards;
+    display: none;
+    opacity: 0;
+  }
+
+  .sns__on {
+    animation: fade-in 1s;
+    animation-fill-mode: forwards;
+    display: flex;
+  }
+
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+    }
+
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes fade-out {
+    from {
+      opacity: 1;
+    }
+
+    to {
+      opacity: 0;
+    }
+  }
+
+
 }
