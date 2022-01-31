@@ -9,7 +9,7 @@ import Contact from '../components/contact'
 
 const Main = (props, ref) => {
 
-    const { wheelHandler, scrollHandler } = props;
+    const { wheelHandler, scrollHandler, scrollIndex, onHeaderClick } = props;
 
     useEffect(() => {
         const outerDivRefWheel = ref.current;
@@ -25,7 +25,11 @@ const Main = (props, ref) => {
 
     return <div ref={ref} className='outer'>
 
-        <Welcome></Welcome>
+        <Welcome
+            scrollIndex={scrollIndex}
+            onHeaderClick={onHeaderClick}
+
+        />
         <AboutMe></AboutMe>
         {/* 디바이더 넣을지 여부는 나중에 항목별 제목 필요할지 결정하고 넣어야할듯. css있음 */}
         {/* <div className="divider"></div> */}

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import MyPic from '../images/JHK.jpg';
+import MyPic from '../images/chesin.jpg';
 
 const Aboutme = () => {
     return <div className="inner aboutme">

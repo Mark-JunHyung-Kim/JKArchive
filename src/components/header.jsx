@@ -2,9 +2,6 @@ import React, { useEffect, useState } from 'react';
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBarcode, faPaw, faBars, faTimes } from "@fortawesome/free-solid-svg-icons";
-import { faInstagram, faFacebookSquare, faGithub } from '@fortawesome/free-brands-svg-icons';
-
-
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 

@@ -1,40 +1,30 @@
 const Dot = ({ num, scrollIndex }) => {
-    return (
-      <div
+  return (
+    <div className={scrollIndex === num ? "dot dot__on" : "dot dot__off"}></div>
+  );
+};
+
+const Dots = ({ scrollIndex }) => {
+  return (
+    <div className="dots__area">
+      <div className="dots__display"
         style={{
-          width: 10,
-          height: 10,
-          border: "1px solid black",
-          borderRadius: 100,
-          backgroundColor: scrollIndex === num ? "black" : "transparent",
-          transitionDuration: 1000,
-          transition: "background-color 0.5s",
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "space-between",
+          alignItems: "center",
+          width: 20,
+          height: 200,
         }}
-      ></div>
-    );
-  };
-  
-  const Dots = ({ scrollIndex }) => {
-    return (
-      <div style={{ position: "fixed", top: "40%", right: 100 }}>
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "space-between",
-            alignItems: "center",
-            width: 20,
-            height: 200,
-          }}
-        >
-          <Dot num={1} scrollIndex={scrollIndex}></Dot>
-          <Dot num={2} scrollIndex={scrollIndex}></Dot>
-          <Dot num={3} scrollIndex={scrollIndex}></Dot>
-          <Dot num={4} scrollIndex={scrollIndex}></Dot>
-          <Dot num={5} scrollIndex={scrollIndex}></Dot>
-        </div>
+      >
+        <Dot num={1} scrollIndex={scrollIndex}></Dot>
+        <Dot num={2} scrollIndex={scrollIndex}></Dot>
+        <Dot num={3} scrollIndex={scrollIndex}></Dot>
+        <Dot num={4} scrollIndex={scrollIndex}></Dot>
+        <Dot num={5} scrollIndex={scrollIndex}></Dot>
       </div>
-    );
-  };
-  
-  export default Dots;
+    </div>
+  );
+};
+
+export default Dots;

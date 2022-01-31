@@ -21,7 +21,7 @@ function App() {
 
   const [pageHeight, setPageHeight] = useState(window.innerHeight);
 
-  const outerDivRef = useRef(null);  
+  const outerDivRef = useRef(null);
 
   // const pageHeight = window.innerHeight; // 화면 세로길이, 100vh와 같습니다.
 
@@ -163,7 +163,7 @@ function App() {
 
     const { scrollTop } = outerDivRef.current; // 스크롤 위쪽 끝부분 위치    
 
-    console.log("스크롤탑 : " + scrollTop, " & 페이지높이 : " + pageHeight);    
+    console.log("스크롤탑 : " + scrollTop, " & 페이지높이 : " + pageHeight);
 
     // 원하는 부분 조정하면 됨
     // 1. 현재 페이지가 웰컴페이지라면 - 첫번째 페이지, 
@@ -225,6 +225,7 @@ function App() {
       <Main
         scrollIndex={scrollIndex}
         setScrollIndex={setScrollIndex}
+        onHeaderClick={onHeaderClick}
         wheelHandler={wheelHandler}
         scrollHandler={scrollHandler}
         ref={outerDivRef}
